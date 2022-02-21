@@ -1,0 +1,21 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container [ngSwitch]="vm.state">
+    <ng-container *ngSwitchCase="state.Loading"> loading </ng-container>
+    <ng-container *ngSwitchCase="state.Ongoing">
+      {{ vm | json }}
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let data of vm.data">
+            <div
+              class="tag"
+              [ngClass]="{ active: data.checked }"
+              (click)="tagToggle(data.tag, data.checked)"
+            >
+              {{ data.tag }}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+  </ng-container>
+</ng-container>
