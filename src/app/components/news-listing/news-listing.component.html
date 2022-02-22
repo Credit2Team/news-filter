@@ -3,11 +3,47 @@
     <ng-container *ngSwitchCase="state.Loading"> loading </ng-container>
     <ng-container *ngSwitchCase="state.Complete">
       <ion-grid>
-        <ion-row>
-          <ion-col *ngFor="let card of vm.data">
-            {{ card.tags | json }}
-            <app-news-card></app-news-card>
-          </ion-col>
+        <ion-row *ngFor="let group of vm.data">
+          <ng-container [ngSwitch]="group.length">
+            <ng-container *ngSwitchCase="4">
+              <ion-col size="12">
+                <app-news-card></app-news-card>
+              </ion-col>
+              <ion-col sizeLg="6" size="12">
+                <ion-row>
+                  <ion-col sizeLg="6" size="12">
+                    <app-news-card></app-news-card>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col sizeLg="6" size="12">
+                    <app-news-card></app-news-card>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <ion-col sizeLg="6" size="12">
+                <app-news-card></app-news-card>
+              </ion-col>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="3">
+              <ion-col size="12">
+                <app-news-card></app-news-card>
+              </ion-col>
+              <ion-col sizeLg="6" size="12">
+                <app-news-card></app-news-card>
+              </ion-col>
+              <ion-col sizeLg="6" size="12">
+                <app-news-card></app-news-card>
+              </ion-col>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+              <ion-col size="12" *ngFor="let card of group">
+                <app-news-card></app-news-card>
+              </ion-col>
+            </ng-container>
+          </ng-container>
         </ion-row>
       </ion-grid>
     </ng-container>

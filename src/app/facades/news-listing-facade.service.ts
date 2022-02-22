@@ -20,7 +20,7 @@ interface NewsCard {
 interface NewsViewModel {
   state: FacadeStates;
   message: string;
-  data: NewsCard[];
+  data: NewsCard[][];
 }
 
 @Injectable({
@@ -35,6 +35,7 @@ export class NewsListingFacadeService {
     this.newsCards$,
   ]).pipe(
     map(([selectedTags, cards]) => this.filterNewsCards(selectedTags, cards)),
+    map((cards) => this.groupCardView(cards)),
     map((cards) => this.constructViewModel(cards)),
     startWith({
       state: FacadeStates.Loading,
@@ -85,7 +86,16 @@ export class NewsListingFacadeService {
     return filteredCards;
   }
 
-  private constructViewModel(news: NewsCard[]): NewsViewModel {
+  private groupCardView(cards: NewsCard[]): NewsCard[][] {
+    const groupedCards = [];
+    while (cards.length > 0) {
+      groupedCards.push(cards.splice(0, 4));
+    }
+    return groupedCards;
+  }
+
+  private constructViewModel(news: NewsCard[][]): NewsViewModel {
+    console.log(news);
     return {
       state: FacadeStates.Complete,
       message: '',
