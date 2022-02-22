@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { FacadeStates } from '../classes/facade-states';
 import { News } from '../classes/news.model';
 import { NewsService } from '../services/news.service';
@@ -30,9 +30,17 @@ export class NewsListingFacadeService {
   newsCards$: Observable<NewsCard[]> = this.newsService.news$.pipe(
     map((news) => this.adaptNewsToCard(news))
   );
-  vm$ = combineLatest([this.filterFacade.selectedTags$, this.newsCards$]).pipe(
+  vm$: Observable<NewsViewModel> = combineLatest([
+    this.filterFacade.selectedTags$,
+    this.newsCards$,
+  ]).pipe(
     map(([selectedTags, cards]) => this.filterNewsCards(selectedTags, cards)),
-    map((cards) => this.constructViewModel(cards))
+    map((cards) => this.constructViewModel(cards)),
+    startWith({
+      state: FacadeStates.Loading,
+      message: 'Fetching',
+      data: undefined,
+    })
   );
 
   constructor(

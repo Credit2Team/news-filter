@@ -1,3 +1,15 @@
-<p>
-  news-listing works!
-</p>
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container [ngSwitch]="vm.state">
+    <ng-container *ngSwitchCase="state.Loading"> loading </ng-container>
+    <ng-container *ngSwitchCase="state.Complete">
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let card of vm.data">
+            {{ card.tags | json }}
+            <app-news-card></app-news-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+  </ng-container>
+</ng-container>

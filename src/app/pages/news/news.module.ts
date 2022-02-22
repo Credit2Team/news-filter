@@ -10,12 +10,14 @@ import { NewsPage } from './news.page';
 import { FilterComponent } from 'src/app/components/filter/filter.component';
 import { NewsListingComponent } from 'src/app/components/news-listing/news-listing.component';
 import { AreAllTagsEnabledPipe } from 'src/app/pipes/are-all-tags-enabled.pipe';
+import { NewsCardComponent } from 'src/app/components/news-card/news-card.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NewsPageRoutingModule],
   declarations: [
     NewsPage,
     NewsListingComponent,
+    NewsCardComponent,
     FilterComponent,
     AreAllTagsEnabledPipe,
   ],
