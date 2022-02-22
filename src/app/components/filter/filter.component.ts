@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FacadeStates } from 'src/app/classes/facade-states';
 import { FilterFacadeService } from 'src/app/facades/filter-facade.service';
 
@@ -7,14 +7,21 @@ import { FilterFacadeService } from 'src/app/facades/filter-facade.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   state = FacadeStates;
   vm$ = this.facade.vm$;
 
   constructor(private facade: FilterFacadeService) {}
 
-  tagToggle(tag: string, state: boolean) {
-    this.facade.constructUrlFromTagSelection(tag, !state);
+  async tagToggle(tag: string, state: boolean) {
+    await this.facade.toggleOneTag(tag, !state);
   }
-  ngOnInit() {}
+
+  async enableAllTags() {
+    await this.facade.toggleAllTags(true);
+  }
+
+  async disableAllTags() {
+    await this.facade.toggleAllTags(false);
+  }
 }

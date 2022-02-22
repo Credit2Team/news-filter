@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, share } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 interface Payload {
   ArticleTitle: string;

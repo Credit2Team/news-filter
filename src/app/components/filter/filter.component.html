@@ -2,9 +2,17 @@
   <ng-container [ngSwitch]="vm.state">
     <ng-container *ngSwitchCase="state.Loading"> loading </ng-container>
     <ng-container *ngSwitchCase="state.Ongoing">
-      {{ vm | json }}
       <ion-grid>
         <ion-row>
+          <ion-col>
+            <div
+              class="tag"
+              [ngClass]="{ active: vm.data | areAllTagsEnabled }"
+              (click)="enableAllTags()"
+            >
+              Select All
+            </div>
+          </ion-col>
           <ion-col *ngFor="let data of vm.data">
             <div
               class="tag"
@@ -13,6 +21,9 @@
             >
               {{ data.tag }}
             </div>
+          </ion-col>
+          <ion-col>
+            <div class="tag active" (click)="disableAllTags()">Reset</div>
           </ion-col>
         </ion-row>
       </ion-grid>

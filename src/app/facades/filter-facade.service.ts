@@ -1,16 +1,11 @@
-import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { map, startWith, take, takeLast } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { FacadeStates } from '../classes/facade-states';
+import { Tag } from '../classes/tag.model';
 import { NewsService } from '../services/news.service';
-
-interface Tag {
-  tag: string;
-  checked: boolean;
-}
 
 interface FilterViewModel {
   state: FacadeStates;
@@ -44,7 +39,6 @@ export class FilterFacadeService {
   constructor(
     private newsService: NewsService,
     private route: ActivatedRoute,
-    private location: Location,
     private router: Router
   ) {}
 
@@ -52,8 +46,6 @@ export class FilterFacadeService {
     allTags: string[],
     selectedTags: string[]
   ): FilterViewModel {
-    console.log('constructing vm');
-    console.log('all tags', allTags);
     this.tagSelection = allTags.map((tag) => {
       return {
         tag,
@@ -71,26 +63,21 @@ export class FilterFacadeService {
     return params.getAll('filter');
   }
 
-  async constructUrlFromTagSelection(
-    selectedTag: string,
-    selectedState: boolean
-  ) {
-    console.log('constructUrlFromTagSelection');
-
+  async toggleOneTag(selectedTag: string, selectedState: boolean) {
     const currentSelection = this.tagSelection.map(({ tag, checked }) => {
       return { tag, checked: tag === selectedTag ? selectedState : checked };
     });
-    console.log(currentSelection);
-    const url = currentSelection.reduce(
-      (currentUrl: string, currentTag: Tag): string => {
-        return currentTag.checked
-          ? `${currentUrl}&filter=${currentTag.tag}`
-          : currentUrl;
-      },
-      ''
-    );
-    console.log(url);
-    // this.location.replaceState(`/news/${url}`);
+    await this.constructUrlFromTagSelection(currentSelection);
+  }
+
+  async toggleAllTags(isEnable: boolean) {
+    const currentSelection = this.tagSelection.map(({ tag }) => {
+      return { tag, checked: isEnable };
+    });
+    await this.constructUrlFromTagSelection(currentSelection);
+  }
+
+  async constructUrlFromTagSelection(currentSelection: Tag[]) {
     const options = {
       queryParams: {
         filter: currentSelection
