@@ -11,6 +11,7 @@ import { FilterComponent } from 'src/app/components/filter/filter.component';
 import { NewsListingComponent } from 'src/app/components/news-listing/news-listing.component';
 import { AreAllTagsEnabledPipe } from 'src/app/pipes/are-all-tags-enabled.pipe';
 import { NewsCardComponent } from 'src/app/components/news-card/news-card.component';
+import { NewsCardTextComponent } from 'src/app/components/news-card-text/news-card-text.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NewsPageRoutingModule],
@@ -18,6 +19,7 @@ import { NewsCardComponent } from 'src/app/components/news-card/news-card.compon
     NewsPage,
     NewsListingComponent,
     NewsCardComponent,
+    NewsCardTextComponent,
     FilterComponent,
     AreAllTagsEnabledPipe,
   ],

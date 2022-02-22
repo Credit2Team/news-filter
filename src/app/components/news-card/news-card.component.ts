@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NewsCardLayout } from 'src/app/classes/layout.model';
+import { NewsCard } from 'src/app/classes/news-card.mode';
 
 @Component({
   selector: 'app-news-card',
@@ -6,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-card.component.scss'],
 })
 export class NewsCardComponent implements OnInit {
-
-  constructor() { }
+  @Input() layout = NewsCardLayout.Bottom;
+  @Input() data: NewsCard;
+  Layout = NewsCardLayout;
+  constructor() {}
 
   ngOnInit() {}
-
 }

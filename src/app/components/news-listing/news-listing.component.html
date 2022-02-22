@@ -7,40 +7,58 @@
           <ng-container [ngSwitch]="group.length">
             <ng-container *ngSwitchCase="4">
               <ion-col size="12">
-                <app-news-card></app-news-card>
+                <app-news-card
+                  [layout]="layout.Left"
+                  [data]="group[0]"
+                ></app-news-card>
               </ion-col>
-              <ion-col sizeLg="6" size="12">
+              <ion-col size-lg="6" size="12">
                 <ion-row>
-                  <ion-col sizeLg="6" size="12">
-                    <app-news-card></app-news-card>
+                  <ion-col size-lg="6" size="12">
+                    <app-news-card
+                      [layout]="layout.Right"
+                      [data]="group[1]"
+                    ></app-news-card>
                   </ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col sizeLg="6" size="12">
-                    <app-news-card></app-news-card>
+                  <ion-col size-lg="6" size="12">
+                    <app-news-card
+                      [layout]="layout.Right"
+                      [data]="group[2]"
+                    ></app-news-card>
                   </ion-col>
                 </ion-row>
               </ion-col>
-              <ion-col sizeLg="6" size="12">
-                <app-news-card></app-news-card>
+              <ion-col size-lg="6" size="12">
+                <app-news-card [data]="group[3]"></app-news-card>
               </ion-col>
             </ng-container>
 
             <ng-container *ngSwitchCase="3">
               <ion-col size="12">
-                <app-news-card></app-news-card>
+                <app-news-card
+                  [layout]="layout.Left"
+                  [data]="group[0]"
+                ></app-news-card>
               </ion-col>
-              <ion-col sizeLg="6" size="12">
-                <app-news-card></app-news-card>
+              <ion-col size-lg="6" size="12">
+                <app-news-card
+                  [layout]="layout.Right"
+                  [data]="group[1]"
+                ></app-news-card>
               </ion-col>
-              <ion-col sizeLg="6" size="12">
-                <app-news-card></app-news-card>
+              <ion-col size-lg="6" size="12">
+                <app-news-card
+                  [layout]="layout.Right"
+                  [data]="group[2]"
+                ></app-news-card>
               </ion-col>
             </ng-container>
 
             <ng-container *ngSwitchDefault>
               <ion-col size="12" *ngFor="let card of group">
-                <app-news-card></app-news-card>
+                <app-news-card [data]="card"></app-news-card>
               </ion-col>
             </ng-container>
           </ng-container>

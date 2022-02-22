@@ -2,20 +2,10 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FacadeStates } from '../classes/facade-states';
+import { NewsCard } from '../classes/news-card.mode';
 import { News } from '../classes/news.model';
 import { NewsService } from '../services/news.service';
 import { FilterFacadeService } from './filter-facade.service';
-
-interface NewsCard {
-  articleTitle: string;
-  author: string;
-  date: string;
-  subject: string;
-  tags: string[];
-  thumbnailImage: string;
-  url: string;
-  id: number;
-}
 
 interface NewsViewModel {
   state: FacadeStates;
@@ -55,6 +45,7 @@ export class NewsListingFacadeService {
         articleTitle,
         author,
         date,
+        shortDescription,
         subject,
         tags,
         thumbnailImage,
@@ -66,6 +57,7 @@ export class NewsListingFacadeService {
         articleTitle,
         author,
         date,
+        shortDescription,
         subject,
         tags,
         thumbnailImage,
