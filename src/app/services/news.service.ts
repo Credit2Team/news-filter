@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, share } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { News } from '../classes/news.model';
 
 interface Payload {
   ArticleTitle: string;
@@ -15,20 +15,6 @@ interface Payload {
   TimeToRead: number;
   URL: string;
   URLLabel: string;
-  id: number;
-}
-
-interface News {
-  articleTitle: string;
-  author: string;
-  date: string;
-  shortDescription: string;
-  subject: string;
-  tags: string[];
-  thumbnailImage: string;
-  timeToRead: number;
-  url: string;
-  uRLLabel: string;
   id: number;
 }
 

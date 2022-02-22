@@ -18,7 +18,7 @@ interface FilterViewModel {
 })
 export class FilterFacadeService {
   private tagSelection: Tag[];
-  private selectedTags$ = this.route.queryParamMap.pipe(
+  selectedTags$ = this.route.queryParamMap.pipe(
     map((params) => this.parseQueryParam(params))
   );
 
