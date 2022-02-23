@@ -8,7 +8,7 @@
   padding-bottom: 0;
 }
 
-.spinner-wrapper {
+.wrapper {
   display: flex;
   align-items: center;
   height: 100%;
@@ -17,4 +17,12 @@
 
 ion-spinner {
   color: white;
+}
+h3 {
+  color: white;
+}
+ion-icon {
+  color: white;
+  height: 30%;
+  width: 30%;
 }

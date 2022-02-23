@@ -1,7 +1,7 @@
 <ng-container *ngIf="vm$ | async as vm">
   <ng-container [ngSwitch]="vm.state">
     <ng-container *ngSwitchCase="state.Loading">
-      <div class="spinner-wrapper">
+      <div class="wrapper">
         <ion-spinner color="white"></ion-spinner>
       </div>
     </ng-container>
@@ -68,6 +68,14 @@
           </ng-container>
         </ion-row>
       </ion-grid>
+    </ng-container>
+    <ng-container *ngSwitchCase="state.Error">
+      <div class="wrapper">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <h3>
+          {{ vm.message }}
+        </h3>
+      </div>
     </ng-container>
   </ng-container>
 </ng-container>

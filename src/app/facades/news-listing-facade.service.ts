@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, map, startWith } from 'rxjs/operators';
 import { FacadeStates } from '../classes/facade-states';
 import { NewsCard } from '../classes/news-card.mode';
 import { News } from '../classes/news.model';
@@ -31,7 +32,8 @@ export class NewsListingFacadeService {
       state: FacadeStates.Loading,
       message: 'Fetching',
       data: undefined,
-    })
+    }),
+    catchError((err) => this.handleError(err))
   );
 
   constructor(
@@ -93,5 +95,18 @@ export class NewsListingFacadeService {
       message: '',
       data: news,
     };
+  }
+
+  private handleError(err: any): Observable<NewsViewModel> {
+    console.log(err);
+    const message =
+      err instanceof HttpErrorResponse
+        ? `${err.status} ${err.statusText}: ${err.message}`
+        : err;
+    return of({
+      state: FacadeStates.Error,
+      message,
+      data: [],
+    });
   }
 }
