@@ -1,3 +1,26 @@
-.bk-white {
-  background-color: white;
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+.text-bottom {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  width: 100%;
+}
+
+.text-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+}
+
+.text-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
 }

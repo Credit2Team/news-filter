@@ -1,41 +1,14 @@
-{{ layout }}
-<ng-container *ngIf="data">
-  <ng-container [ngSwitch]="layout">
-    <ng-container *ngSwitchCase="Layout.Left">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="4">
-            <app-news-card-text [data]="data"></app-news-card-text>
-          </ion-col>
-          <ion-col class="bk-white">
-            <ion-img [src]="data.thumbnailImage"> </ion-img>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ng-container>
-    <ng-container *ngSwitchCase="Layout.Right">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="8" class="bk-white">
-            <ion-img [src]="data.thumbnailImage"> </ion-img>
-          </ion-col>
-          <ion-col>
-            <app-news-card-text [data]="data"></app-news-card-text>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ng-container>
-    <ng-container *ngSwitchCase="Layout.Bottom">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="12" class="bk-white">
-            <ion-img [src]="data.thumbnailImage"> </ion-img>
-          </ion-col>
-          <ion-col>
-            <app-news-card-text [data]="data"></app-news-card-text>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ng-container>
+<div class="wrapper">
+  <ng-container *ngIf="data">
+    <ion-img [src]="data.thumbnailImage"> </ion-img>
+    <div
+      [ngClass]="{
+        'text-bottom': layout === Layout.Bottom,
+        'text-left': layout === Layout.Left,
+        'text-right': layout === Layout.Right
+      }"
+    >
+      <app-news-card-text [data]="data"></app-news-card-text>
+    </div>
   </ng-container>
-</ng-container>
+</div>
