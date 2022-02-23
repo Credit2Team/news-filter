@@ -31,10 +31,7 @@ export class NewsService {
 
   tags$ = this.news$.pipe(map((news) => this.getTagsFromNews(news)));
 
-  constructor(private http: HttpClient) {
-    this.tags$.subscribe((news) => console.log(news));
-    this.news$.subscribe((news) => console.log(news));
-  }
+  constructor(private http: HttpClient) {}
 
   private adaptPayload(payload: Payload[]): News[] {
     if (payload == null) {

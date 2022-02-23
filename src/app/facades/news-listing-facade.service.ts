@@ -89,7 +89,6 @@ export class NewsListingFacadeService {
   }
 
   private constructViewModel(news: NewsCard[][]): NewsViewModel {
-    console.log(news);
     return {
       state: FacadeStates.Complete,
       message: '',
@@ -98,7 +97,6 @@ export class NewsListingFacadeService {
   }
 
   private handleError(err: any): Observable<NewsViewModel> {
-    console.log(err);
     const message =
       err instanceof HttpErrorResponse
         ? `${err.status} ${err.statusText}: ${err.message}`
