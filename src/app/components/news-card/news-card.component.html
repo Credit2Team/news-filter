@@ -1,15 +1,17 @@
 <div class="wrapper whiteBG">
   <ng-container *ngIf="data">
-    <ion-img [src]="data.thumbnailImage"> </ion-img>
-    <div
-      class="whiteBG"
-      [ngClass]="{
-        'text-bottom': layout === Layout.Bottom || isMobile,
-        'text-left': layout === Layout.Left && !isMobile,
-        'text-right': layout === Layout.Right && !isMobile
-      }"
-    >
-      <app-news-card-text [data]="data"></app-news-card-text>
-    </div>
+    <a [href]="data?.url">
+      <ion-img [src]="data.thumbnailImage"> </ion-img>
+      <div
+        class="card-text-background"
+        [ngClass]="{
+          'text-bottom': layout === Layout.Bottom || isMobile,
+          'text-left': layout === Layout.Left && !isMobile,
+          'text-right': layout === Layout.Right && !isMobile
+        }"
+      >
+        <app-news-card-text [data]="data"></app-news-card-text>
+      </div>
+    </a>
   </ng-container>
 </div>

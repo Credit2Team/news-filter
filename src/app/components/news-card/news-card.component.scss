@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 .text-bottom {
   position: absolute;
@@ -23,4 +24,28 @@
   right: 0;
   width: 30%;
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper:hover ion-img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+ion-img {
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+
+.card-text-background {
+  background-color: white;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+
+.wrapper:hover .card-text-background {
+  background-color: #dbdbdb !important;
 }
