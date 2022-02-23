@@ -3,9 +3,9 @@
     <ion-img [src]="data.thumbnailImage"> </ion-img>
     <div
       [ngClass]="{
-        'text-bottom': layout === Layout.Bottom,
-        'text-left': layout === Layout.Left,
-        'text-right': layout === Layout.Right
+        'text-bottom': layout === Layout.Bottom || isMobile,
+        'text-left': layout === Layout.Left && !isMobile,
+        'text-right': layout === Layout.Right && !isMobile
       }"
     >
       <app-news-card-text [data]="data"></app-news-card-text>

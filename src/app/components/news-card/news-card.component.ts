@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { defer, from } from 'rxjs';
 import { NewsCardLayout } from 'src/app/classes/layout.model';
 import { NewsCard } from 'src/app/classes/news-card.mode';
 
@@ -7,11 +9,10 @@ import { NewsCard } from 'src/app/classes/news-card.mode';
   templateUrl: './news-card.component.html',
   styleUrls: ['./news-card.component.scss'],
 })
-export class NewsCardComponent implements OnInit {
+export class NewsCardComponent {
   @Input() layout = NewsCardLayout.Bottom;
   @Input() data: NewsCard;
   Layout = NewsCardLayout;
-  constructor() {}
-
-  ngOnInit() {}
+  isMobile = this.platform.is('mobile');
+  constructor(private platform: Platform) {}
 }
