@@ -7,3 +7,14 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+ion-spinner {
+  color: white;
+}

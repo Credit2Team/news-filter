@@ -1,6 +1,10 @@
 <ng-container *ngIf="vm$ | async as vm">
   <ng-container [ngSwitch]="vm.state">
-    <ng-container *ngSwitchCase="state.Loading"> loading </ng-container>
+    <ng-container *ngSwitchCase="state.Loading">
+      <div class="spinner-wrapper">
+        <ion-spinner color="white"></ion-spinner>
+      </div>
+    </ng-container>
     <ng-container *ngSwitchCase="state.Complete">
       <ion-grid>
         <ion-row *ngFor="let group of vm.data">
