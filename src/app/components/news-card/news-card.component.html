@@ -1,7 +1,8 @@
-<div class="wrapper">
+<div class="wrapper whiteBG">
   <ng-container *ngIf="data">
     <ion-img [src]="data.thumbnailImage"> </ion-img>
     <div
+      class="whiteBG"
       [ngClass]="{
         'text-bottom': layout === Layout.Bottom || isMobile,
         'text-left': layout === Layout.Left && !isMobile,
