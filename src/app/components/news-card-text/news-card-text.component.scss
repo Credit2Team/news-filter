@@ -4,4 +4,33 @@
 
 .wrapper {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.subject {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+}
+
+.article {
+  flex: 3 3 0;
+  overflow: hidden;
+}
+
+.date-author {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.large-text {
+  font-size: 1.5em;
+}
+
+.small-text {
+  font-size: 1em;
 }
